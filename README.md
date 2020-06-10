@@ -1,1 +1,1 @@
-# Programacion-mixta-enterra
+# Programacion-entera-mixta
