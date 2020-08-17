@@ -1,6 +1,7 @@
 
 <head>
-<title>Programacion-entera-mixta</title>
+Programacion-entera-mixta<br>
+  <br>
 </head>
 Grupo 2<br>
 Norbey Danilo Muñoz<br>
