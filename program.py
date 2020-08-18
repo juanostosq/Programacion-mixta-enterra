@@ -100,7 +100,7 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
     j4R6=IntVar()
     j5R6=IntVar()
     jIR6=IntVar()
-    jIR6=IntVar()
+
 
     j1R7=IntVar()
     j2R7=IntVar()
@@ -120,7 +120,10 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
         if ecnumecu.get()=="1":
 
             if ec4.get()=="x1":
-                x1 = solver.floatVar(0.0, infinity, 'x1')
+                x1 = solver.IntVar(0.0, infinity, 'x1')
+            else:
+                x1 = solver.NumVar(0.0, infinity, 'x1')
+
 
 
             ec10 =Entry(raiz1, width=5,textvariable=j1)
@@ -136,6 +139,630 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
 
             btermine = tk.Button(raiz1, height=1, width=1 ,text="Y", command=termine)
             btermine.place(x=268, y=207)
+
+
+
+            def clicked():
+
+                if ec22.get()=="1":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+
+
+                    comsolv1 = Combobox(raiz1,width=3 ,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1 >= float(solv1igual.get()))
+
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=410)
+
+
+
+
+                if ec22.get()=="2":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=850, y=210)
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1 >= float(solv2igual.get()))
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="3":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1>= float(solv3igual.get()))
+
+
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="4":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1 >= float(solv4igual.get()))
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="5":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=810, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=855, y=298)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1>= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1>= float(solv5igual.get()))
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="6":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=810, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=855, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=810, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=855, y=320)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1>= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1>= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1>= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1<= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1>= float(solv6igual.get()))
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="7":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=810, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=855, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=810, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=855, y=320)
+
+
+                    #otro
+
+                    solv17 =Entry(raiz1, width=5,textvariable=j1R7)
+                    solv17.place(x=650, y=342)
+                    labelsolv17 = Label(raiz1, text = "*x1 " , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=342)
+
+                    comsolv17 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv17.place(x=810, y=342)
+
+                    solv7igual =Entry(raiz1, width=5,textvariable=jIR7)
+                    solv7igual.place(x=855, y=342)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1>= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1>= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1<= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1>= float(solv6igual.get()))
+
+                        if comsolv17.get()=="<=":
+                            solver.Add(float(solv17.get())*x1<= float(solv7igual.get()))
+                        if comsolv17.get()==">=":
+                            solver.Add(float(solv17.get())*x1 >= float(solv7igual.get()))
+
+                        SolveAndPrint(solver, [x1])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+
+
+            j=IntVar()
+            ec22=Entry(raiz1, width=10,textvariable=j)
+            ec22.grid(column=3, row=3)
+            btn = Button(raiz1, text="Ingresar ecuaciones", command=clicked)
+            btn.grid(column = 4, row = 3)
+
+
+
+
+
 
         if ecnumecu.get()=="2":
 
@@ -171,6 +798,769 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
             btermine = tk.Button(raiz1, height=1, width=1 ,text="Y", command=termine)
             btermine.place(x=338, y=207)
 
+            def clicked():
+
+                if ec22.get()=="1":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+
+
+                    comsolv1 = Combobox(raiz1,width=3 ,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2 >= float(solv1igual.get()))
+
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=410)
+
+
+
+
+                if ec22.get()=="2":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=850, y=210)
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2 >= float(solv2igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="3":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2>= float(solv3igual.get()))
+
+
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="4":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2 <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2 <= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2 >= float(solv4igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="5":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=810, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=855, y=298)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2 <= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2>= float(solv5igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="6":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=810, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=855, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+                    solv26 =Entry(raiz1, width=5,textvariable=j2R6)
+                    solv26.place(x=738, y=320)
+                    labelsolv26 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv26.place(x=783, y=320)
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=810, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=855, y=320)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2>= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2>= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2>= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2<= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2>= float(solv6igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="7":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=810, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=855, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=810, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=855, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=810, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=855, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=810, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=855, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=810, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=855, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+                    solv26 =Entry(raiz1, width=5,textvariable=j2R6)
+                    solv26.place(x=738, y=320)
+                    labelsolv26 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv26.place(x=783, y=320)
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=810, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=855, y=320)
+
+
+                    #otro
+
+                    solv17 =Entry(raiz1, width=5,textvariable=j1R7)
+                    solv17.place(x=650, y=342)
+                    labelsolv17 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=342)
+
+                    solv27 =Entry(raiz1, width=5,textvariable=j2R7)
+                    solv27.place(x=738, y=342)
+                    labelsolv27 = Label(raiz1, text = "*x2 " , font=("Arial Bold", 10))
+                    labelsolv27.place(x=783, y=342)
+
+                    comsolv17 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv17.place(x=810, y=342)
+
+                    solv7igual =Entry(raiz1, width=5,textvariable=jIR7)
+                    solv7igual.place(x=855, y=342)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2>= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2>= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2<= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2>= float(solv6igual.get()))
+
+                        if comsolv17.get()=="<=":
+                            solver.Add(float(solv17.get())*x1+float(solv27.get())*x2 <= float(solv7igual.get()))
+                        if comsolv17.get()==">=":
+                            solver.Add(float(solv17.get())*x1+float(solv27.get())*x2 >= float(solv7igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+
+
+            j=IntVar()
+            ec22=Entry(raiz1, width=10,textvariable=j)
+            ec22.grid(column=3, row=3)
+            btn = Button(raiz1, text="Ingresar ecuaciones", command=clicked)
+            btn.grid(column = 4, row = 3)
+
+
+
+
+
+
+        #aqui inicia variables 3
         if ecnumecu.get()=="3":
 
             if ec4.get()=="x1":
@@ -188,22 +1578,6 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                 x2 = solver.NumVar(0.0, infinity, 'x2')
                 x3 = solver.IntVar(0.0, infinity, 'x3')
 
-
-
-            if ec4.get()=="x1":
-                x1 = solver.IntVar(0.0, infinity, 'x1')
-                x2 = solver.NumVar(0.0, infinity, 'x2')
-                x3 = solver.NumVar(0.0, infinity, 'x3')
-
-            if ec4.get()=="x2":
-                x1 = solver.NumVar(0.0, infinity, 'x1')
-                x2 = solver.IntVar(0.0, infinity, 'x2')
-                x3 = solver.NumVar(0.0, infinity, 'x3')
-
-            if ec4.get()=="x3":
-                x1 = solver.NumVar(0.0, infinity, 'x1')
-                x2 = solver.NumVar(0.0, infinity, 'x2')
-                x3 = solver.IntVar(0.0, infinity, 'x3')
 
 
 
@@ -230,6 +1604,919 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
 
             btermine = tk.Button(raiz1, height=1, width=1 ,text="Y", command=termine)
             btermine.place(x=412, y=207)
+
+
+
+            def clicked():
+
+                if ec22.get()=="1":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+
+                    comsolv1 = Combobox(raiz1,width=3 ,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=953, y=210)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 >= float(solv1igual.get()))
+
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=410)
+
+
+
+
+                if ec22.get()=="2":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=953, y=210)
+
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=898, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=953, y=232)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 >= float(solv2igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="3":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=953, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=898, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=953, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=898, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=953, y=254)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3>= float(solv3igual.get()))
+
+
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="4":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=953, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=898, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=953, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=898, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=953, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=898, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=953, y=276)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3>= float(solv4igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="5":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=953, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=898, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=953, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=898, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=953, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=898, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=953, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    solv35 =Entry(raiz1, width=5,textvariable=j3R5)
+                    solv35.place(x=828, y=298)
+                    labelsolv35= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv35.place(x=873, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=898, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=953, y=298)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3 <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3 <= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3>= float(solv5igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="6":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=953, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=898, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=953, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=898, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=953, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=898, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=953, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    solv35 =Entry(raiz1, width=5,textvariable=j3R5)
+                    solv35.place(x=828, y=298)
+                    labelsolv35= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv35.place(x=873, y=298)
+
+
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=898, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=953, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+                    solv26 =Entry(raiz1, width=5,textvariable=j2R6)
+                    solv26.place(x=738, y=320)
+                    labelsolv26 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv26.place(x=783, y=320)
+
+                    solv36 =Entry(raiz1, width=5,textvariable=j3R6)
+                    solv36.place(x=828, y=320)
+                    labelsolv36= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv36.place(x=873, y=320)
+
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=898, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=953, y=320)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3<= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3<= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3>= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3>= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3>= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3 <= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3 >= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3 <= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3>= float(solv6igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="7":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=898, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=955, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=898, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=955, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=898, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=955, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=898, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=955, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    solv35 =Entry(raiz1, width=5,textvariable=j3R5)
+                    solv35.place(x=828, y=298)
+                    labelsolv35= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv35.place(x=873, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=898, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=955, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+                    solv26 =Entry(raiz1, width=5,textvariable=j2R6)
+                    solv26.place(x=738, y=320)
+                    labelsolv26 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv26.place(x=783, y=320)
+
+                    solv36 =Entry(raiz1, width=5,textvariable=j3R6)
+                    solv36.place(x=828, y=320)
+                    labelsolv36= Label(raiz1, text = "*x3 " , font=("Arial Bold", 10))
+                    labelsolv36.place(x=873, y=320)
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=898, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=955, y=320)
+
+
+                    #otro
+
+                    solv17 =Entry(raiz1, width=5,textvariable=j1R7)
+                    solv17.place(x=650, y=342)
+                    labelsolv17 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=342)
+
+                    solv27 =Entry(raiz1, width=5,textvariable=j2R7)
+                    solv27.place(x=738, y=342)
+                    labelsolv27 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv27.place(x=783, y=342)
+
+                    solv37 =Entry(raiz1, width=5,textvariable=j3R7)
+                    solv37.place(x=828, y=342)
+                    labelsolv37= Label(raiz1, text = "*x3" , font=("Arial Bold", 10))
+                    labelsolv37.place(x=873, y=342)
+
+                    comsolv17 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv17.place(x=898, y=342)
+
+                    solv7igual =Entry(raiz1, width=5,textvariable=jIR7)
+                    solv7igual.place(x=955, y=342)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3>= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3 <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3<= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3>= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3<= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3 >= float(solv6igual.get()))
+
+                        if comsolv17.get()=="<=":
+                            solver.Add(float(solv17.get())*x1+float(solv27.get())*x2+float(solv37.get())*x3 <= float(solv7igual.get()))
+                        if comsolv17.get()==">=":
+                            solver.Add(float(solv17.get())*x1+float(solv27.get())*x2+float(solv37.get())*x3 >= float(solv7igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+
+
+            j=IntVar()
+            ec22=Entry(raiz1, width=10,textvariable=j)
+            ec22.grid(column=3, row=3)
+            btn = Button(raiz1, text="Ingresar ecuaciones", command=clicked)
+            btn.grid(column = 4, row = 3)
+
 
 
 
@@ -295,6 +2582,9 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                 if com.get()=="Minimizar":
                    solver.Minimize(float(ec10.get())*x1+float(ec11.get())*x2+float(ec12.get())*x3+float(ec13.get())*x4)
 
+            btermine = tk.Button(raiz1, height=1, width=1 ,text="Y", command=termine)
+            btermine.place(x=482, y=207)
+
 
 
             def clicked():
@@ -321,13 +2611,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
+
                     def terminef():
 
                         if comsolv1.get()=="<=":
@@ -366,13 +2655,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">=","="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
+
 
                     solv12 =Entry(raiz1, width=5,textvariable=j1R2)
                     solv12.place(x=650, y=232)
@@ -394,13 +2682,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv42.place(x=963, y=232)
 
-                    comsolv12 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv12.place(x=990, y=232)
 
                     solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
                     solv2igual.place(x=1045, y=232)
-                    labeligual2 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual2.place(x=1025, y=232)
+
 
                     def terminef():
 
@@ -441,13 +2728,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">=","="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
+
 
                     #otro
 
@@ -471,13 +2757,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv42.place(x=963, y=232)
 
-                    comsolv12 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv12.place(x=990, y=232)
 
                     solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
                     solv2igual.place(x=1045, y=232)
-                    labeligual2 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual2.place(x=1025, y=232)
+
 
                     #otro
 
@@ -501,13 +2786,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=254)
 
-                    comsolv13 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv13.place(x=990, y=254)
 
                     solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
                     solv3igual.place(x=1045, y=254)
-                    labeligual3 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual3.place(x=1025, y=254)
+
 
                     def terminef():
 
@@ -555,13 +2839,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">=","="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
+
 
                     #otro
 
@@ -585,13 +2868,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv42.place(x=963, y=232)
 
-                    comsolv12 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv12.place(x=990, y=232)
 
                     solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
                     solv2igual.place(x=1045, y=232)
-                    labeligual2 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual2.place(x=1025, y=232)
+
 
                     #otro
 
@@ -615,13 +2897,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=254)
 
-                    comsolv13 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv13.place(x=990, y=254)
 
                     solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
                     solv3igual.place(x=1045, y=254)
-                    labeligual3 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual3.place(x=1025, y=254)
+
 
                     #otro
 
@@ -645,13 +2926,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=276)
 
-                    comsolv14 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv14.place(x=990, y=276)
 
                     solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
                     solv4igual.place(x=1045, y=276)
-                    labeligual4 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual4.place(x=1025, y=276)
+
 
                     def terminef():
 
@@ -702,13 +2982,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">=","="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
+
 
                     #otro
 
@@ -732,13 +3011,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv42.place(x=963, y=232)
 
-                    comsolv12 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv12.place(x=990, y=232)
 
                     solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
                     solv2igual.place(x=1045, y=232)
-                    labeligual2 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual2.place(x=1025, y=232)
+
 
                     #otro
 
@@ -762,13 +3040,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=254)
 
-                    comsolv13 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv13.place(x=990, y=254)
 
                     solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
                     solv3igual.place(x=1045, y=254)
-                    labeligual3 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual3.place(x=1025, y=254)
+
 
                     #otro
 
@@ -792,13 +3069,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=276)
 
-                    comsolv14 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv14.place(x=990, y=276)
 
                     solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
                     solv4igual.place(x=1045, y=276)
-                    labeligual4 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual4.place(x=1025, y=276)
+
 
                     #otro
 
@@ -822,13 +3098,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv45 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv45.place(x=963, y=298)
 
-                    comsolv15 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv15.place(x=990, y=298)
 
                     solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
                     solv5igual.place(x=1045, y=298)
-                    labeligual5 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual5.place(x=1025, y=298)
+
 
                     def terminef():
 
@@ -885,13 +3160,11 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">=","="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
 
                     #otro
 
@@ -915,13 +3188,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv42.place(x=963, y=232)
 
-                    comsolv12 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv12.place(x=990, y=232)
 
                     solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
                     solv2igual.place(x=1045, y=232)
-                    labeligual2 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual2.place(x=1025, y=232)
+
 
                     #otro
 
@@ -945,13 +3217,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=254)
 
-                    comsolv13 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv13.place(x=990, y=254)
 
                     solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
                     solv3igual.place(x=1045, y=254)
-                    labeligual3 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual3.place(x=1025, y=254)
+
 
                     #otro
 
@@ -975,13 +3246,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=276)
 
-                    comsolv14 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv14.place(x=990, y=276)
 
                     solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
                     solv4igual.place(x=1045, y=276)
-                    labeligual4 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual4.place(x=1025, y=276)
+
 
                     #otro
 
@@ -1005,13 +3275,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv45 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv45.place(x=963, y=298)
 
-                    comsolv15 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv15.place(x=990, y=298)
 
                     solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
                     solv5igual.place(x=1045, y=298)
-                    labeligual5 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual5.place(x=1025, y=298)
+
 
                     #otro
 
@@ -1035,13 +3304,11 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv46 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv46.place(x=963, y=320)
 
-                    comsolv16 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv16.place(x=990, y=320)
 
                     solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
                     solv6igual.place(x=1045, y=320)
-                    labeligual6 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual6.place(x=1025, y=320)
 
                     def terminef():
 
@@ -1103,13 +3370,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv4.place(x=963, y=210)
 
-                    comsolv1 = Combobox(raiz1, width=2,values=["<=",">=","="], state="readonly")
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv1.place(x=990, y=210)
 
                     solv1igual =Entry(raiz1, width=5,textvariable=jIR)
                     solv1igual.place(x=1045, y=210)
-                    labeligual = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual.place(x=1025, y=210)
+
 
                     #otro
 
@@ -1133,13 +3399,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv42.place(x=963, y=232)
 
-                    comsolv12 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv12.place(x=990, y=232)
 
                     solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
                     solv2igual.place(x=1045, y=232)
-                    labeligual2 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual2.place(x=1025, y=232)
+
 
                     #otro
 
@@ -1163,13 +3428,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=254)
 
-                    comsolv13 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv13.place(x=990, y=254)
 
                     solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
                     solv3igual.place(x=1045, y=254)
-                    labeligual3 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual3.place(x=1025, y=254)
+
 
                     #otro
 
@@ -1193,13 +3457,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv43.place(x=963, y=276)
 
-                    comsolv14 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv14.place(x=990, y=276)
 
                     solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
                     solv4igual.place(x=1045, y=276)
-                    labeligual4 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual4.place(x=1025, y=276)
+
 
                     #otro
 
@@ -1223,13 +3486,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv45 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv45.place(x=963, y=298)
 
-                    comsolv15 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv15.place(x=990, y=298)
 
                     solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
                     solv5igual.place(x=1045, y=298)
-                    labeligual5 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual5.place(x=1025, y=298)
+
 
                     #otro
 
@@ -1253,13 +3515,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv46 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv46.place(x=963, y=320)
 
-                    comsolv16 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv16.place(x=990, y=320)
 
                     solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
                     solv6igual.place(x=1045, y=320)
-                    labeligual6 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual6.place(x=1025, y=320)
+
 
                     #otro
 
@@ -1283,13 +3544,12 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
                     labelsolv47 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
                     labelsolv47.place(x=963, y=342)
 
-                    comsolv17 = Combobox(raiz1, width=2,values=["<=",">="], state="readonly")
+                    comsolv17 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
                     comsolv17.place(x=990, y=342)
 
                     solv7igual =Entry(raiz1, width=5,textvariable=jIR7)
                     solv7igual.place(x=1045, y=342)
-                    labeligual7 = Label(raiz1, text = "=" , font=("Arial Bold", 10))
-                    labeligual7.place(x=1025, y=342)
+
 
                     def terminef():
 
@@ -1342,8 +3602,7 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
 
 
 
-            btermine = tk.Button(raiz1, height=1, width=1 ,text="Y", command=termine)
-            btermine.place(x=482, y=207)
+
 
             j=IntVar()
             ec22=Entry(raiz1, width=10,textvariable=j)
@@ -1358,6 +3617,37 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
 
 
         if ecnumecu.get()=="5":
+
+            if ec4.get()=="x1":
+                x1 = solver.IntVar(0.0, infinity, 'x1')
+                x2 = solver.NumVar(0.0, infinity, 'x2')
+                x3 = solver.NumVar(0.0, infinity, 'x3')
+                x4 = solver.NumVar(0.0, infinity, 'x4')
+                x5 = solver.NumVar(0.0, infinity, 'x5')
+            if ec4.get()=="x2":
+                x1 = solver.NumVar(0.0, infinity, 'x1')
+                x2 = solver.IntVar(0.0, infinity, 'x2')
+                x3 = solver.NumVar(0.0, infinity, 'x3')
+                x4 = solver.NumVar(0.0, infinity, 'x4')
+                x5 = solver.NumVar(0.0, infinity, 'x5')
+            if ec4.get()=="x3":
+                x1 = solver.NumVar(0.0, infinity, 'x1')
+                x2 = solver.NumVar(0.0, infinity, 'x2')
+                x3 = solver.IntVar(0.0, infinity, 'x3')
+                x4 = solver.NumVar(0.0, infinity, 'x4')
+                x5 = solver.NumVar(0.0, infinity, 'x5')
+            if ec4.get()=="x4":
+                x1 = solver.NumVar(0.0, infinity, 'x1')
+                x2 = solver.NumVar(0.0, infinity, 'x2')
+                x3 = solver.NumVar(0.0, infinity, 'x3')
+                x4 = solver.IntVar(0.0, infinity, 'x4')
+                x5 = solver.NumVar(0.0, infinity, 'x5')
+            if ec4.get()=="x5":
+                x1 = solver.NumVar(0.0, infinity, 'x1')
+                x2 = solver.NumVar(0.0, infinity, 'x2')
+                x3 = solver.NumVar(0.0, infinity, 'x3')
+                x4 = solver.NumVar(0.0, infinity, 'x4')
+                x5 = solver.IntVar(0.0, infinity, 'x5')
 
 
             ec10 =Entry(raiz1, width=5,textvariable=j1)
@@ -1394,6 +3684,1140 @@ def RunIntegerExampleNaturalLanguageAPI(optimization_problem_type):
 
             btermine = tk.Button(raiz1, height=1, width=1 ,text="Y", command=termine)
             btermine.place(x=554, y=207)
+
+
+            def clicked():
+
+                if ec22.get()=="1":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    solv5 =Entry(raiz1, width=5,textvariable=j5R)
+                    solv5.place(x=1008, y=210)
+                    labelsolv5 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv5.place(x=1053, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=1098, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1143, y=210)
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 >= float(solv1igual.get()))
+
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4,x5])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=410)
+
+
+
+
+                if ec22.get()=="2":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    solv5 =Entry(raiz1, width=5,textvariable=j5R)
+                    solv5.place(x=1008, y=210)
+                    labelsolv5 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv5.place(x=1053, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=1098, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1143, y=210)
+
+                    #otro
+
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    solv42 =Entry(raiz1, width=5,textvariable=j4R2)
+                    solv42.place(x=918, y=232)
+                    labelsolv42 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv42.place(x=963, y=232)
+
+                    solv52 =Entry(raiz1, width=5,textvariable=j5R2)
+                    solv52.place(x=1008, y=232)
+                    labelsolv52 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv52.place(x=1053, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=1098, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=1143, y=232)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 >= float(solv2igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4,x5])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="3":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    solv5 =Entry(raiz1, width=5,textvariable=j5R)
+                    solv5.place(x=1008, y=210)
+                    labelsolv5 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv5.place(x=1053, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=1098, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1143, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    solv42 =Entry(raiz1, width=5,textvariable=j4R2)
+                    solv42.place(x=918, y=232)
+                    labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv42.place(x=963, y=232)
+
+                    solv52 =Entry(raiz1, width=5,textvariable=j5R2)
+                    solv52.place(x=1008, y=232)
+                    labelsolv52 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv52.place(x=1053, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=1098, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=1143, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+                    solv43 =Entry(raiz1, width=5,textvariable=j4R3)
+                    solv43.place(x=918, y=254)
+                    labelsolv43 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=254)
+
+                    solv53 =Entry(raiz1, width=5,textvariable=j5R3)
+                    solv53.place(x=1008, y=254)
+                    labelsolv53 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv53.place(x=1053, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=1098, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=1143, y=254)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5  <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5  >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5  <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5  >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5  <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5  >= float(solv3igual.get()))
+
+
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4,x5])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="4":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    solv5 =Entry(raiz1, width=5,textvariable=j5R)
+                    solv5.place(x=1008, y=210)
+                    labelsolv5 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv5.place(x=1053, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=1098, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1143, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    solv42 =Entry(raiz1, width=5,textvariable=j4R2)
+                    solv42.place(x=918, y=232)
+                    labelsolv42 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv42.place(x=963, y=232)
+
+                    solv52 =Entry(raiz1, width=5,textvariable=j5R2)
+                    solv52.place(x=1008, y=232)
+                    labelsolv52 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv52.place(x=1053, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=1098, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=1143, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+                    solv43 =Entry(raiz1, width=5,textvariable=j4R3)
+                    solv43.place(x=918, y=254)
+                    labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=254)
+
+                    solv53 =Entry(raiz1, width=5,textvariable=j5R3)
+                    solv53.place(x=1008, y=254)
+                    labelsolv53 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv53.place(x=1053, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=1098, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=1143, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+                    solv44 =Entry(raiz1, width=5,textvariable=j4R4)
+                    solv44.place(x=918, y=276)
+                    labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=276)
+
+                    solv54 =Entry(raiz1, width=5,textvariable=j5R4)
+                    solv54.place(x=1008, y=276)
+                    labelsolv54 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv54.place(x=1053, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=1098, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=1143, y=276)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5 <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4 +float(solv54.get())*x5<= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4+float(solv54.get())*x5 >= float(solv4igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4,x5])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+                if ec22.get()=="5":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    solv5 =Entry(raiz1, width=5,textvariable=j5R)
+                    solv5.place(x=1008, y=210)
+                    labelsolv5 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv5.place(x=1053, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=1098, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1143, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    solv42 =Entry(raiz1, width=5,textvariable=j4R2)
+                    solv42.place(x=918, y=232)
+                    labelsolv42 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv42.place(x=963, y=232)
+
+                    solv52 =Entry(raiz1, width=5,textvariable=j5R2)
+                    solv52.place(x=1008, y=232)
+                    labelsolv52 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv52.place(x=1053, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=1093, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=1143, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+                    solv43 =Entry(raiz1, width=5,textvariable=j4R3)
+                    solv43.place(x=918, y=210)
+                    labelsolv43 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=254)
+
+                    solv53 =Entry(raiz1, width=5,textvariable=j5R3)
+                    solv53.place(x=1008, y=210)
+                    labelsolv53 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv53.place(x=1053, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=1098, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=1143, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+                    solv44 =Entry(raiz1, width=5,textvariable=j4R4)
+                    solv44.place(x=918, y=276)
+                    labelsolv44 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv44.place(x=963, y=276)
+
+                    solv54 =Entry(raiz1, width=5,textvariable=j5R4)
+                    solv54.place(x=1008, y=276)
+                    labelsolv54 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv54.place(x=1053, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=1098, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=1143, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    solv35 =Entry(raiz1, width=5,textvariable=j3R5)
+                    solv35.place(x=828, y=298)
+                    labelsolv35= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv35.place(x=873, y=298)
+
+                    solv45 =Entry(raiz1, width=5,textvariable=j4R5)
+                    solv45.place(x=918, y=298)
+                    labelsolv45 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv45.place(x=963, y=298)
+
+                    solv55 =Entry(raiz1, width=5,textvariable=j5R5)
+                    solv55.place(x=1008, y=298)
+                    labelsolv55 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv55.place(x=1053, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=1098, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=1143, y=298)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5 <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4+float(solv54.get())*x5 <= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4+float(solv54.get())*x5 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3+float(solv45.get())*x4+float(solv55.get())*x5 <= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3+float(solv45.get())*x4+float(solv55.get())*x5 >= float(solv5igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4,x5])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="6":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    solv5 =Entry(raiz1, width=5,textvariable=j5R)
+                    solv5.place(x=1008, y=210)
+                    labelsolv5 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv5.place(x=1053, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=1098, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1143, y=210)
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    solv42 =Entry(raiz1, width=5,textvariable=j4R2)
+                    solv42.place(x=918, y=232)
+                    labelsolv42 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv42.place(x=963, y=232)
+
+
+
+                    solv52 =Entry(raiz1, width=5,textvariable=j5R2)
+                    solv52.place(x=1008, y=232)
+                    labelsolv52 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv52.place(x=1053, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=1098, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=1143, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+                    solv43 =Entry(raiz1, width=5,textvariable=j4R3)
+                    solv43.place(x=918, y=254)
+                    labelsolv43 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=254)
+
+                    solv53 =Entry(raiz1, width=5,textvariable=j5R3)
+                    solv53.place(x=1008, y=254)
+                    labelsolv53 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv53.place(x=1053, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=1098, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=1043, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+                    solv44 =Entry(raiz1, width=5,textvariable=j4R4)
+                    solv44.place(x=918, y=276)
+                    labelsolv43 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=276)
+
+                    solv54 =Entry(raiz1, width=5,textvariable=j5R4)
+                    solv54.place(x=1008, y=276)
+                    labelsolv53 = Label(raiz1, text = "*x5" , font=("Arial Bold", 10))
+                    labelsolv53.place(x=1053, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=1098, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=1143, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    solv35 =Entry(raiz1, width=5,textvariable=j3R5)
+                    solv35.place(x=828, y=298)
+                    labelsolv35= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv35.place(x=873, y=298)
+
+                    solv45 =Entry(raiz1, width=5,textvariable=j4R5)
+                    solv45.place(x=918, y=298)
+                    labelsolv45 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv45.place(x=963, y=298)
+
+                    solv55 =Entry(raiz1, width=5,textvariable=j5R5)
+                    solv55.place(x=1008, y=298)
+                    labelsolv55 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv55.place(x=1053, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=1098, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=1143, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+                    solv26 =Entry(raiz1, width=5,textvariable=j2R6)
+                    solv26.place(x=738, y=320)
+                    labelsolv26 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv26.place(x=783, y=320)
+
+                    solv36 =Entry(raiz1, width=5,textvariable=j3R6)
+                    solv36.place(x=828, y=320)
+                    labelsolv36= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv36.place(x=873, y=320)
+
+                    solv46 =Entry(raiz1, width=5,textvariable=j4R6)
+                    solv46.place(x=918, y=320)
+                    labelsolv46 = Label(raiz1, text = "*x4 +" , font=("Arial Bold", 10))
+                    labelsolv46.place(x=963, y=320)
+
+                    solv56 =Entry(raiz1, width=5,textvariable=j5R6)
+                    solv56.place(x=1008, y=320)
+                    labelsolv56 = Label(raiz1, text = "*x5 " , font=("Arial Bold", 10))
+                    labelsolv56.place(x=1053, y=320)
+
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=1098, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=1143, y=320)
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4+float(solv5.get())*x5 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4+float(solv52.get())*x5 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5<= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4+float(solv53.get())*x5 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4+float(solv54.get())*x5 <= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4+float(solv54.get())*x5 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3+float(solv45.get())*x4+float(solv55.get())*x5 <= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3+float(solv45.get())*x4+float(solv55.get())*x5 >= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3+float(solv46.get())*x4+float(solv56.get())*x5 <= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3+float(solv46.get())*x4+float(solv56.get())*x5 >= float(solv6igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4,x5])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+                if ec22.get()=="7":
+
+                    solv1 =Entry(raiz1, width=5,textvariable=j1R)
+                    solv1.place(x=650, y=210)
+                    labelsolv1 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv1.place(x=693, y=210)
+
+                    solv2 =Entry(raiz1, width=5,textvariable=j2R)
+                    solv2.place(x=738, y=210)
+                    labelsolv2 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv2.place(x=783, y=210)
+
+                    solv3 =Entry(raiz1, width=5,textvariable=j3R)
+                    solv3.place(x=828, y=210)
+                    labelsolv3= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv3.place(x=873, y=210)
+
+                    solv4 =Entry(raiz1, width=5,textvariable=j4R)
+                    solv4.place(x=918, y=210)
+                    labelsolv4 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv4.place(x=963, y=210)
+
+                    comsolv1 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv1.place(x=990, y=210)
+
+                    solv1igual =Entry(raiz1, width=5,textvariable=jIR)
+                    solv1igual.place(x=1045, y=210)
+
+
+                    #otro
+
+                    solv12 =Entry(raiz1, width=5,textvariable=j1R2)
+                    solv12.place(x=650, y=232)
+                    labelsolv12 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv12.place(x=693, y=232)
+
+                    solv22 =Entry(raiz1, width=5,textvariable=j2R2)
+                    solv22.place(x=738, y=232)
+                    labelsolv22 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv22.place(x=783, y=232)
+
+                    solv32 =Entry(raiz1, width=5,textvariable=j3R2)
+                    solv32.place(x=828, y=232)
+                    labelsolv32= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv32.place(x=873, y=232)
+
+                    solv42 =Entry(raiz1, width=5,textvariable=j4R2)
+                    solv42.place(x=918, y=232)
+                    labelsolv42 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv42.place(x=963, y=232)
+
+                    comsolv12 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv12.place(x=990, y=232)
+
+                    solv2igual =Entry(raiz1, width=5,textvariable=jIR2)
+                    solv2igual.place(x=1045, y=232)
+
+
+                    #otro
+
+                    solv13 =Entry(raiz1, width=5,textvariable=j1R3)
+                    solv13.place(x=650, y=254)
+                    labelsolv13 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv13.place(x=693, y=254)
+
+                    solv23 =Entry(raiz1, width=5,textvariable=j2R3)
+                    solv23.place(x=738, y=254)
+                    labelsolv23 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv23.place(x=783, y=254)
+
+                    solv33 =Entry(raiz1, width=5,textvariable=j3R3)
+                    solv33.place(x=828, y=254)
+                    labelsolv33= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv33.place(x=873, y=254)
+
+                    solv43 =Entry(raiz1, width=5,textvariable=j4R3)
+                    solv43.place(x=918, y=254)
+                    labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=254)
+
+                    comsolv13 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv13.place(x=990, y=254)
+
+                    solv3igual =Entry(raiz1, width=5,textvariable=jIR3)
+                    solv3igual.place(x=1045, y=254)
+
+
+                    #otro
+
+                    solv14 =Entry(raiz1, width=5,textvariable=j1R4)
+                    solv14.place(x=650, y=276)
+                    labelsolv14 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv14.place(x=693, y=276)
+
+                    solv24 =Entry(raiz1, width=5,textvariable=j2R4)
+                    solv24.place(x=738, y=276)
+                    labelsolv24 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv24.place(x=783, y=276)
+
+                    solv34 =Entry(raiz1, width=5,textvariable=j3R4)
+                    solv34.place(x=828, y=276)
+                    labelsolv34= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv34.place(x=873, y=276)
+
+                    solv44 =Entry(raiz1, width=5,textvariable=j4R4)
+                    solv44.place(x=918, y=276)
+                    labelsolv43 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv43.place(x=963, y=276)
+
+                    comsolv14 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv14.place(x=990, y=276)
+
+                    solv4igual =Entry(raiz1, width=5,textvariable=jIR4)
+                    solv4igual.place(x=1045, y=276)
+
+
+                    #otro
+
+                    solv15 =Entry(raiz1, width=5,textvariable=j1R5)
+                    solv15.place(x=650, y=298)
+                    labelsolv15 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv15.place(x=693, y=298)
+
+                    solv25 =Entry(raiz1, width=5,textvariable=j2R5)
+                    solv25.place(x=738, y=298)
+                    labelsolv25 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv25.place(x=783, y=298)
+
+                    solv35 =Entry(raiz1, width=5,textvariable=j3R5)
+                    solv35.place(x=828, y=298)
+                    labelsolv35= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv35.place(x=873, y=298)
+
+                    solv45 =Entry(raiz1, width=5,textvariable=j4R5)
+                    solv45.place(x=918, y=298)
+                    labelsolv45 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv45.place(x=963, y=298)
+
+                    comsolv15 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv15.place(x=990, y=298)
+
+                    solv5igual =Entry(raiz1, width=5,textvariable=jIR5)
+                    solv5igual.place(x=1045, y=298)
+
+
+                    #otro
+
+                    solv16 =Entry(raiz1, width=5,textvariable=j1R6)
+                    solv16.place(x=650, y=320)
+                    labelsolv16 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=320)
+
+                    solv26 =Entry(raiz1, width=5,textvariable=j2R6)
+                    solv26.place(x=738, y=320)
+                    labelsolv26 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv26.place(x=783, y=320)
+
+                    solv36 =Entry(raiz1, width=5,textvariable=j3R6)
+                    solv36.place(x=828, y=320)
+                    labelsolv36= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv36.place(x=873, y=320)
+
+                    solv46 =Entry(raiz1, width=5,textvariable=j4R6)
+                    solv46.place(x=918, y=320)
+                    labelsolv46 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv46.place(x=963, y=320)
+
+                    comsolv16 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv16.place(x=990, y=320)
+
+                    solv6igual =Entry(raiz1, width=5,textvariable=jIR6)
+                    solv6igual.place(x=1045, y=320)
+
+
+                    #otro
+
+                    solv17 =Entry(raiz1, width=5,textvariable=j1R7)
+                    solv17.place(x=650, y=342)
+                    labelsolv17 = Label(raiz1, text = "*x1 +" , font=("Arial Bold", 10))
+                    labelsolv16.place(x=693, y=342)
+
+                    solv27 =Entry(raiz1, width=5,textvariable=j2R7)
+                    solv27.place(x=738, y=342)
+                    labelsolv27 = Label(raiz1, text = "*x2 +" , font=("Arial Bold", 10))
+                    labelsolv27.place(x=783, y=342)
+
+                    solv37 =Entry(raiz1, width=5,textvariable=j3R7)
+                    solv37.place(x=828, y=342)
+                    labelsolv37= Label(raiz1, text = "*x3 +" , font=("Arial Bold", 10))
+                    labelsolv37.place(x=873, y=342)
+
+                    solv47 =Entry(raiz1, width=5,textvariable=j4R7)
+                    solv47.place(x=918, y=342)
+                    labelsolv47 = Label(raiz1, text = "*x4" , font=("Arial Bold", 10))
+                    labelsolv47.place(x=963, y=342)
+
+                    comsolv17 = Combobox(raiz1, width=3,values=["<=",">="], state="readonly")
+                    comsolv17.place(x=990, y=342)
+
+                    solv7igual =Entry(raiz1, width=5,textvariable=jIR7)
+                    solv7igual.place(x=1045, y=342)
+
+
+                    def terminef():
+
+                        if comsolv1.get()=="<=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4 <= float(solv1igual.get()))
+                        if comsolv1.get()==">=":
+                            solver.Add(float(solv1.get())*x1+float(solv2.get())*x2+float(solv3.get())*x3+float(solv4.get())*x4 >= float(solv1igual.get()))
+
+                        if comsolv12.get()=="<=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4 <= float(solv2igual.get()))
+                        if comsolv12.get()==">=":
+                            solver.Add(float(solv12.get())*x1+float(solv22.get())*x2+float(solv32.get())*x3+float(solv42.get())*x4 >= float(solv2igual.get()))
+
+                        if comsolv13.get()=="<=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4 <= float(solv3igual.get()))
+                        if comsolv13.get()==">=":
+                            solver.Add(float(solv13.get())*x1+float(solv23.get())*x2+float(solv33.get())*x3+float(solv43.get())*x4 >= float(solv3igual.get()))
+
+                        if comsolv14.get()=="<=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4 <= float(solv4igual.get()))
+                        if comsolv14.get()==">=":
+                            solver.Add(float(solv14.get())*x1+float(solv24.get())*x2+float(solv34.get())*x3+float(solv44.get())*x4 >= float(solv4igual.get()))
+
+                        if comsolv15.get()=="<=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3+float(solv45.get())*x4 <= float(solv5igual.get()))
+                        if comsolv15.get()==">=":
+                            solver.Add(float(solv15.get())*x1+float(solv25.get())*x2+float(solv35.get())*x3+float(solv45.get())*x4 >= float(solv5igual.get()))
+
+                        if comsolv16.get()=="<=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3+float(solv46.get())*x4 <= float(solv6igual.get()))
+                        if comsolv16.get()==">=":
+                            solver.Add(float(solv16.get())*x1+float(solv26.get())*x2+float(solv36.get())*x3+float(solv46.get())*x4 >= float(solv6igual.get()))
+
+                        if comsolv17.get()=="<=":
+                            solver.Add(float(solv17.get())*x1+float(solv27.get())*x2+float(solv37.get())*x3+float(solv47.get())*x4 <= float(solv7igual.get()))
+                        if comsolv17.get()==">=":
+                            solver.Add(float(solv17.get())*x1+float(solv27.get())*x2+float(solv37.get())*x3+float(solv47.get())*x4 >= float(solv7igual.get()))
+
+                        SolveAndPrint(solver, [x1, x2, x3,x4])
+
+                    bterminef = tk.Button(raiz1,text="finalizar", command=terminef)
+                    bterminef.place(x=563, y=510)
+
+
+
+
+
+
+
+
+
+
+
+
+            j=IntVar()
+            ec22=Entry(raiz1, width=10,textvariable=j)
+            ec22.grid(column=3, row=3)
+            btn = Button(raiz1, text="Ingresar ecuaciones", command=clicked)
+            btn.grid(column = 4, row = 3)
 
 
 
